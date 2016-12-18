@@ -6,3 +6,5 @@ function countLetter([str, letter]){
     }
     console.log(count);
 }
+
+// countLetter(['hello', 'l'])
