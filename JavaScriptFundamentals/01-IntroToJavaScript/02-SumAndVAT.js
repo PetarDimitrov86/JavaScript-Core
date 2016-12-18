@@ -8,3 +8,5 @@ function calcSumVAT(input){
     console.log('VAT = ' + sum * 0.2);
     console.log('total = ' + (sum * 1.2))
 }
+
+//calcSumVAT(['1.20', '2.60', '3.50'])
