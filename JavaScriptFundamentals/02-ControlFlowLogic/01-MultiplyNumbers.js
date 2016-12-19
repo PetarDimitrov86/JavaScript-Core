@@ -5,3 +5,5 @@ function multiply(input) {
     }
     return result;
 }
+
+// multiply(['3', '2'])
