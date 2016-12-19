@@ -1,4 +1,5 @@
 function coneVolumeArea ([radius, height]) {
+    //let [r, h] = input.map(Number);
     let r = Number(radius);
     let h = Number(height);
     let slant = Math.sqrt(r * r + h * h)
