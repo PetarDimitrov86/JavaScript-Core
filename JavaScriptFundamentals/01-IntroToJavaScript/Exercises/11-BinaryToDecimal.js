@@ -11,3 +11,7 @@ function convertToDecimal(binaryNum) {
 
 // console.log(convertToDecimal(['00001001']));
 // console.log(convertToDecimal(['11110000']));
+
+
+// Version Two using intParse
+// binaryNum = parseInt(binaryNum, 2);
