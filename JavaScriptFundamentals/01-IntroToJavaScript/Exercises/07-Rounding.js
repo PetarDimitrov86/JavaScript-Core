@@ -11,3 +11,7 @@ function roundUp (input){
 }
 
 // console.log(roundUp([10.5, 3]))
+
+// Version 2
+// We can trim the extra zeroes by converting the toFixed() string back to Number
+// Number(result.toFixed(precision))
