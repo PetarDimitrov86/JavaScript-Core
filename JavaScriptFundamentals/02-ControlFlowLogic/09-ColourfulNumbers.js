@@ -15,3 +15,4 @@ function printNumbers([numberOfLines]) {
 }
 
 // console.log(printNumbers([10]));
+// document.body.innerHTML = printNumbers(10);
