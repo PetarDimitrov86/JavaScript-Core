@@ -6,3 +6,8 @@ function calcDegrees(grads){
 }
 
 // console.log(calcDegrees([400]))
+
+// Version 2:
+// degrees = degrees % 360;
+// degrees += 360;
+// degrees = degrees % 360;
