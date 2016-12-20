@@ -18,4 +18,4 @@ function createTable([size]){
 }
 
 // console.log(createTable([4]));
-document.body.innerHTML = createTable(['5']);
+// document.body.innerHTML = createTable(['5']);
