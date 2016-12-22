@@ -1,15 +1,13 @@
 function drawCalendar([day, month, year]){
-    let result = '<table>\n';
-    result += '  <tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr>\n';
+    let result = '<table>\n  <tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr>\n';
     let previousMonth = new Date(year, month - 1, 0);
     let lastMonthLastDate = previousMonth.getDate();
     let firstDateCurrentMonth = new Date(previousMonth.getTime() + 24 * 60 * 60 * 1000);
     let lastDayLastMonth = previousMonth.getDay();
     result += '  <tr>';
     if (lastDayLastMonth != 6){
-        for (let i = 0; i <= lastDayLastMonth; i++) {
+        for (let i = 0; i <= lastDayLastMonth; i++)
             result += `<td class="prev-month">${lastMonthLastDate - lastDayLastMonth + i}</td>`
-        }
     }
     let counter = 1;
     for (let i = lastDayLastMonth % 6; i < 6; i++) {
@@ -19,18 +17,15 @@ function drawCalendar([day, month, year]){
         }
         result += `<td>${counter++}</td>`;
     }
-    if (firstDateCurrentMonth.getDay() == 0){
+    if (firstDateCurrentMonth.getDay() == 0)
         result += `<td>${counter++}</td>`;
-    }
     result += '</tr>\n  <tr>';
     let currentMonthLastDate = new Date(year, month, 0).getDate();
     for (let i = counter; i <= currentMonthLastDate; i++) {
-        if (i == day){
+        if (i == day)
             result += `<td class="today">${day}</td>`;
-        }
-        else {
+        else
             result += `<td>${i}</td>`;
-        }
         counter++;
         if ((i + firstDateCurrentMonth.getDay()) % 7 == 0)
             result += '</tr>\n  <tr>'
