@@ -6,11 +6,17 @@ function drawCalendar([day, month, year]){
     let firstDateCurrentMonth = new Date(previousMonth.getTime() + 24 * 60 * 60 * 1000);
     let lastDayLastMonth = previousMonth.getDay();
     result += '  <tr>';
-    for (let i = 0; i <= lastDayLastMonth; i++) {
-        result += `<td class="prev-month">${lastMonthLastDate - lastDayLastMonth + i}</td>`
+    if (lastDayLastMonth != 6){
+        for (let i = 0; i <= lastDayLastMonth; i++) {
+            result += `<td class="prev-month">${lastMonthLastDate - lastDayLastMonth + i}</td>`
+        }
     }
     let counter = 1;
-    for (let i = lastDayLastMonth; i < 6; i++) {
+    for (let i = lastDayLastMonth % 6; i < 6; i++) {
+        if (counter == day){
+            result += `<td class="today">${counter++}</td>`;
+            continue;
+        }
         result += `<td>${counter++}</td>`;
     }
     result += '</tr>\n  <tr>';
@@ -30,9 +36,9 @@ function drawCalendar([day, month, year]){
     for (let i = 1; i <= daysFromNextMonth; i++) {
         result += `<td class="next-month">${i}</td>`
     }
-    
+
     result += '</tr>\n</table>\n';
-    return result;
+    return result.replace('<tr></tr>\n', '');
 }
 
-// console.log(drawCalendar([24, 12, 2012]));
+console.log(drawCalendar([1, 4, 2016]))
