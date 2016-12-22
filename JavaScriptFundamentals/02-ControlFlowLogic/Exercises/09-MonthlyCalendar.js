@@ -19,6 +19,9 @@ function drawCalendar([day, month, year]){
         }
         result += `<td>${counter++}</td>`;
     }
+    if (firstDateCurrentMonth.getDay() == 0){
+        result += `<td>${counter++}</td>`;
+    }
     result += '</tr>\n  <tr>';
     let currentMonthLastDate = new Date(year, month, 0).getDate();
     for (let i = counter; i <= currentMonthLastDate; i++) {
@@ -41,4 +44,4 @@ function drawCalendar([day, month, year]){
     return result.replace('<tr></tr>\n', '');
 }
 
-console.log(drawCalendar([1, 4, 2016]))
+console.log(drawCalendar([1, 5, 2016]))
