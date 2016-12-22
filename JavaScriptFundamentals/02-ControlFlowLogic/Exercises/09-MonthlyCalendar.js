@@ -35,4 +35,4 @@ function drawCalendar([day, month, year]){
     return result;
 }
 
-console.log(drawCalendar([24, 12, 2012]));
+// console.log(drawCalendar([24, 12, 2012]));
