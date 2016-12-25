@@ -6,4 +6,7 @@ function findEvenPositionEl(input){
     return result;
 }
 
-console.log(findEvenPositionEl(['20', '30', '40']))
+// console.log(findEvenPositionEl(['20', '30', '40']))
+
+// Version two : functional
+// return input.filter((x, i) => i % 2 ==0)
