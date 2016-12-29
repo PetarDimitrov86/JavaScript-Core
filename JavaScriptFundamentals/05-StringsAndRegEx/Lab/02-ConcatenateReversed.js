@@ -19,3 +19,6 @@ function concatReverse(input){
 //return revStr;
 //}
 
+// Version three with one line
+//    return input.join('').split('').reverse().join('');
+
