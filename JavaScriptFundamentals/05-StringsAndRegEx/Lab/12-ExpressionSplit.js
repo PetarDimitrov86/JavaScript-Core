@@ -7,3 +7,9 @@ function splitExpr([expression]){
 }
 
 splitExpr(['let sum = 4 * 4,b = "wow";'])
+
+// Version 2 : shorter
+// function splitExpr([expression]){
+//     let pattern = /[(),\s;\.]+/g;
+//     return expression.split(pattern).join('\n');
+// }
