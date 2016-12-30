@@ -10,3 +10,9 @@ function capNums(input){
 }
 
 console.log(capNums(['The300', 'What is that?', 'I think it’s the 3rd movie.', 'Lets watch it at 22:45']));
+
+// Version 2 for match
+// let match = pattern.exec(line);
+// while (match){
+// nums.push(match[0]);
+// match = regex.exec(line);
