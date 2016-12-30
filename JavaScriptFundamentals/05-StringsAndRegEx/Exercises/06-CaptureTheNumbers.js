@@ -16,3 +16,11 @@ console.log(capNums(['The300', 'What is that?', 'I think it’s the 3rd movie.',
 // while (match){
 // nums.push(match[0]);
 // match = regex.exec(line);
+
+// Version 3 - Author Solution
+// function capNumsAlt(input){
+//     let text = input.join(' ');
+//     let regex = /\d+/g;
+//     let numbers = text.match(regex);
+//     console.log(numbers.join(' ')); 
+// }
