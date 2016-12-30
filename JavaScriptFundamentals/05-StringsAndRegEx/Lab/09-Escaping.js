@@ -12,4 +12,14 @@ function htmlEscape(input) {
     return result;
 }
 
-console.log(htmlEscape(['<b>unescaped text</b>', 'normal text']));
+// console.log(htmlEscape(['<b>unescaped text</b>', 'normal text']));
+
+// Version 2 : Author Solution
+// function htmlList(items) {
+//     return "<ul>\n" + items.map(htmlEscape).map(
+//                                     item => ` <li>${item}</li>`).join("\n") + "</ul>\n";
+//     function htmlEscape(text) {
+//         let map = { '"': '&quot;', '&': '&amp;', "'": '&#39;', '<': '&lt;', '>': '&gt;' };
+//         return text.replace(/[\"&'<>]/g, ch => map[ch]);
+//     }
+// }
