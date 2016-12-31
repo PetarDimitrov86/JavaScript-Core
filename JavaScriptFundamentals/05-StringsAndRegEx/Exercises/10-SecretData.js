@@ -1,5 +1,5 @@
 function hideInfo(input){
-    let pattern = /\*[A-Z][A-Za-z]*\b\s*|\+[0-9-]{10}\b\s*|![A-Za-z0-9]+\b\s*|_[A-Za-z0-9]+\b\s*/g;
+    let pattern = /\*[A-Z][A-Za-z]*(?:\s|$)|\+[0-9-]{10}(?:\s|$)|![A-Za-z0-9]+(?:\s|$)|_[A-Za-z0-9]+(?:\s|$)/g;
     let finalText = input.join('\n');
     let match;
     while (match = pattern.exec(finalText)){
