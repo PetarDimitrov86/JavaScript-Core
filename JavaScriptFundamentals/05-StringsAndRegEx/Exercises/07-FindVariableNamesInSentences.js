@@ -1,5 +1,5 @@
 function findNames([text]){
-    let pattern = /_([A-Za-z0-9]+)/g;
+    let pattern = /\b_([A-Za-z0-9]+)\b/g;
     let match;
     let result = [];
     while (match = pattern.exec(text))
@@ -7,4 +7,4 @@ function findNames([text]){
     return result.join(',')
 }
 
-console.log(findNames(['The _id and _age variables are both integers.']));
+// console.log(findNames(['The _id and _age variables are both integers.']));
