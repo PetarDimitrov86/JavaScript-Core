@@ -11,7 +11,12 @@ function printSales(dataRows){
         if (!townStats.has(town))
             townStats.set(town, new Map())
         if (!townStats.get(town).has(productName))
-            townStats.get(town).set(productName, amountOfSales * pricePerUnit);
+            townStats.get(town).set(productName, 0);
+
+        let oldAmount = townStats.get(town).get(productName)
+        let newAmount = oldAmount + amountOfSales * pricePerUnit;
+
+        townStats.get(town).set(productName, newAmount)
     }
 
     for (let [key, value] of townStats){
@@ -24,7 +29,7 @@ function printSales(dataRows){
 
 printSales(['Sofia -> Laptops HP -> 200 : 2000',
             'Sofia -> Raspberry -> 200000 : 1500',
-            'Sofia -> Audi Q7 -> 200 : 100000',
+            'Sofia -> Raspberry -> 200 : 100000',
             'Montana -> Portokals -> 200000 : 1',
             'Montana -> Qgodas -> 20000 : 0.2',
             'Montana -> Chereshas -> 1000 : 0.3'
