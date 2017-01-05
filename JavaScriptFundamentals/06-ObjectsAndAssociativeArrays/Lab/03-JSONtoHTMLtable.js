@@ -1,11 +1,8 @@
 function extractJSON(input){
     Object.values = function (obj) {
         let vals = [];
-        for( let key in obj ) {
-            if ( obj.hasOwnProperty(key) ) {
+        for( let key in obj )
                 vals.push(obj[key]);
-            }
-        }
         return vals;
     };
 
@@ -31,4 +28,4 @@ function extractJSON(input){
     }
 }
 
-console.log(extractJSON('[{"Name":"Tomatoes & Chips","Price":2.35},{"Name":"J&B Chocolate","Price":0.96}]'))
+// console.log(extractJSON('[{"Name":"Tomatoes & Chips","Price":2.35},{"Name":"J&B Chocolate","Price":0.96}]'))
