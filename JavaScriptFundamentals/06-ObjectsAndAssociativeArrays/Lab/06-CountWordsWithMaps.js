@@ -4,8 +4,7 @@ function countWords([input]){
     for (let word of words){
         if (!wordCount.has(word))
             wordCount.set(word, 0);
-        let occurence = wordCount.get(word);
-        wordCount.set(word, occurence + 1)
+        wordCount.set(word, wordCount.get(word) + 1)
     }
     let wordsArr = Array.from(wordCount.keys()).sort();
     for (let word of wordsArr){
