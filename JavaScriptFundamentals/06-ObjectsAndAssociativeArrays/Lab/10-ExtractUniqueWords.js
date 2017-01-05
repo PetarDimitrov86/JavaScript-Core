@@ -5,6 +5,7 @@ function extractUniqueWords(dataRows){
     for (let word of wordsArray)
         uniqueWords.add(word.toLowerCase());
     console.log(Array.from(uniqueWords).join(', '))
+    // console.log([...uniqueWords.values()].join(", "));
 }
 extractUniqueWords(['Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis hendrerit dui.',
                     'Quisque fringilla est urna, vitae efficitur urna vestibulum fringilla.',
