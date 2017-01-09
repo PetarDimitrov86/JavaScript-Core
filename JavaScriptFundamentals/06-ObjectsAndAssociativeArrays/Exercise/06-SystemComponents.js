@@ -15,7 +15,7 @@ function registerSystems(dataRows){
     }
 
     let sortedSystems = Array.from(allSystems).sort( (s1, s2) => sortSystems(s1, s2));
-
+                                              //.sort(sortSystems)
     for (let [outerKey, outerValue] of sortedSystems){
         console.log(outerKey);
         let sortedComponents = Array.from(outerValue).sort( (c1, c2) => c2[1].size - c1[1].size);
