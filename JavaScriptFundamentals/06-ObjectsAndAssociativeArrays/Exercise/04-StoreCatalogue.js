@@ -8,14 +8,10 @@ function sortCatalogue(dataRows){
         if (!store.has(firstLetter))
             store.set(firstLetter, new Map())
         store.get(firstLetter).set(productName, price)
-
     }
-
     let sortedStore = Array.from(store.keys()).sort();
-
     for (let letter of sortedStore){
         console.log(letter);
-
         let sortedProductNames = Array.from(store.get(letter).keys()).sort();
         for (let prod of sortedProductNames){
             console.log(`  ${prod}: ${store.get(letter).get(prod)}`)
