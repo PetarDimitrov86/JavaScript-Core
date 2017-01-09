@@ -18,7 +18,7 @@ function registerSystems(dataRows){
 
     for (let [outerKey, outerValue] of sortedSystems){
         console.log(outerKey);
-        let sortedComponents = Array.from(outerValue).sort( (c1, c2) => sortComponents(c1, c2));
+        let sortedComponents = Array.from(outerValue).sort( (c1, c2) => c2[1].size - c1[1].size);
         for (let [component, subcomponents] of sortedComponents){
             console.log(`|||${component}`)
             for (let subcomponent of subcomponents)
@@ -34,14 +34,6 @@ function registerSystems(dataRows){
         if (s1[0].toLowerCase() < s2[0].toLowerCase())         // ASCENDING SORT
             return -1;
         if (s1[0].toLowerCase() > s2[0].toLowerCase())
-            return 1;
-        return 0;
-    }
-
-    function sortComponents(c1, c2){
-        if (c1[1].size > c2[1].size)            // DESCENDING SORT
-            return -1;
-        if (c1[1].size < c2[1].size)
             return 1;
         return 0;
     }
