@@ -11,17 +11,9 @@ function storeSequences(dataRows){
             sequences.add(sortedNums);
     }
 
-    let orderedSequences = Array.from(sequences).sort((a, b) => sortSequences(a, b));
+    let orderedSequences = Array.from(sequences).sort((a, b) => a.length - b.length);
     for (let seq of orderedSequences){
         console.log(`[${seq.join(', ')}]`);
-    }
-
-    function sortSequences(s1, s2){
-        if (s1.length < s2.length)                            // ASCENDING
-            return -1;
-        if (s1.length > s2.length)
-            return 1;
-        return 0;
     }
 }
 
