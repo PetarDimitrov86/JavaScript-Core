@@ -1,28 +1,27 @@
 function printResponses(input){
     let hashCode = input.pop();
     for (let line = 0; line < input.length; line+= 3){
-        let method = input[line];
-        let credentials = input[line + 1];
-        let content = input[line + 2];
-
         let methodPattern = /^Method: (GET|POST|PUT|DELETE)$/g;
         let credentialsPattern = /^Credentials: (Bearer|Basic) ([a-zA-Z0-9]+)$/g;
         let contentPattern = /^Content: [a-zA-Z0-9.]*$/g;
 
-        if (method.match(methodPattern) == null || credentials.match(credentialsPattern) == null || content.match(contentPattern) == null){
+        let method = methodPattern.exec(input[line]);
+        let credentials = credentialsPattern.exec(input[line + 1]);
+        let content = contentPattern.exec(input[line + 2]);
+
+        if (!method || !content || !credentials){
             console.log('Response-Code:400');
             continue;
         }
 
-        let methodType = methodPattern.exec(method)[1];
-        let credentialInfo = credentialsPattern.exec(credentials);
-        let credentialType = credentialInfo[1];
+        let methodType = method[1];
+        let credentialType = credentials[1];
         if (credentialType == 'Basic' && (methodType == 'POST' || methodType == 'DELETE' || methodType == 'PUT')){
             console.log(`Response-Method:${methodType}&Code:401`);
             continue;
         }
 
-        let authenticationToken = credentialInfo[2];
+        let authenticationToken = credentials[2];
         let hashCheck = validateHashCode(authenticationToken, hashCode);
         if (hashCheck == false){
             console.log(`Response-Method:${methodType}&Code:403`);
