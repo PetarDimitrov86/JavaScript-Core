@@ -37,6 +37,10 @@ function printResponses(input){
             let letter = hash[i + 1];
             let index = authToken.indexOf(letter);
 
+            //if ((authToken.match(new RegExp(letter, 'g')) || []).length == repeatCount)
+            //    return true;
+            //return false;
+
             let occurenceCount = 0;
             while (index != -1){
                 occurenceCount++;
