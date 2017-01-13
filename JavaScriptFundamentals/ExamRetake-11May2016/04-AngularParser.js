@@ -84,7 +84,7 @@ function extractModules(input){
     }
 
     function sortElements(e1, e2) {
-        return e1.localeCompare(e2)
+        return e1.localeCompare(e2) // ASC Alphabetical Order
     }
 }
 
