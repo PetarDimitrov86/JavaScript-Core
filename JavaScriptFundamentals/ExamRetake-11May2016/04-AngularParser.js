@@ -15,16 +15,14 @@ function extractModules(input){
         let modelInfo = modelPattern.exec(line);
         let viewInfo = viewPattern.exec(line);
 
-        if (appInfo != null){
+        if (appInfo){
             let appName = appInfo[1];
-            if (!modules.has(appName)){
-                modules.set(appName, new Map());
-                modules.get(appName).set('controllers', new Set());
-                modules.get(appName).set('models', new Set());
-                modules.get(appName).set('views', new Set());
-            }
+            modules.set(appName, new Map());
+            modules.get(appName).set('controllers', new Set());
+            modules.get(appName).set('models', new Set());
+            modules.get(appName).set('views', new Set());
         }
-        else if (controllerInfo != null){
+        else if (controllerInfo){
             let appToAssignTo = controllerInfo[2];
             let controllerName = controllerInfo[1];
             if (modules.has(appToAssignTo))
@@ -32,7 +30,7 @@ function extractModules(input){
             else
                 unassignedControllers.set(controllerName + ',' + appToAssignTo, appToAssignTo);
         }
-        else if (modelInfo != null){
+        else if (modelInfo){
             let appToAssignTo = modelInfo[2];
             let modelName = modelInfo[1];
             if (modules.has(appToAssignTo))
@@ -40,7 +38,7 @@ function extractModules(input){
             else
                 unassignedModels.set(modelName + ',' + appToAssignTo, appToAssignTo);
         }
-        else if (viewInfo != null){
+        else if (viewInfo){
             let appToAssignTo = viewInfo[2];
             let viewName = viewInfo[1];
             if (modules.has(appToAssignTo))
@@ -86,11 +84,7 @@ function extractModules(input){
     }
 
     function sortElements(e1, e2) {
-        if (e1 < e2)         // ASCENDING
-            return -1;
-        if (e1 > e2)
-            return 1;
-        return 0;
+        return e1.localeCompare(e2)
     }
 }
 
