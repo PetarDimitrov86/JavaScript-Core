@@ -12,14 +12,13 @@
     <tr><td>Didi</td><td>didi@didi.net</td></tr>
     <tr><td>Tedy</td><td>tedy@tedy.com</td></tr>
 </table>
-Email: <input type="text" id="email" />
+Email: <input type="text" name="email" />
 <button onclick="deleteByEmail()">Delete</button>
 <div id="result" ></div>
 <script>
     function deleteByEmail(){
-        document.getElementById('result').textContent = '';
         let emailToDelete = document.querySelector('input').value;
-        //let emailToDelete = document.getElementsByName('email')[0].value;     // Just another way to get the text from the field
+        //let emailToDelete = document.getElementsByName('email')[0].value;
         let emailFound = false;
         let tableRows = document.querySelectorAll('table#customers tr');
         for (let row of tableRows){
@@ -31,6 +30,8 @@ Email: <input type="text" id="email" />
         }
         if (!emailFound)
             document.getElementById('result').textContent = 'Not found.';
+        else
+            document.getElementById('result').textContent = 'Deleted.';
     }
 </script>
 </body>
