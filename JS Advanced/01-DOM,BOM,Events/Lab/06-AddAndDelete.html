@@ -20,7 +20,7 @@
         span.firstChild.addEventListener('click', deleteItem);  // first child refers to the newly created <a> element. Then a function is attached to click event.
         li.appendChild(span);                                   // adds the span element after the added text above.
         document.getElementById("items").appendChild(li);       // Append the full li element to the list of items.
-        document.getElementById('newItemText').value = '';      // clear the text field
+
         function deleteItem() {
             let span = this.parentNode;                         // we get the parent element of the <a> element
             let li = span.parentNode;                           // we get the parent element of the span which is the <li> element
@@ -28,6 +28,7 @@
             ul.removeChild(li);                                 //
             //document.getElementById("items").removeChild(this.parentNode.parentNode);  // this can replace all three lines with one
         }
+        document.getElementById('newItemText').value = '';      // clear the text field
     }
 </script>
 </body>
