@@ -32,6 +32,18 @@
             document.getElementById('time').textContent = ("0" + Math.trunc(time / 60)).slice(-2) + ':' + ("0" + (time % 60)).slice(-2);
         }
     }
+            // Version 2 to increase the time with a custom padding function:
+        //        function increaseTime(){
+        //    time++;
+        //    document.getElementById('time').textContent = `${pad(Math.floor(time / 60), 2)}:${pad(time % 60, 2)}`;
+        //}
+  		//       function pad(number, length) {
+        //    let str = '' + number;
+        //    while (str.length < length) {
+        //        str = '0' + str;
+        //    }
+        //    return str;
+        //}
 </script>
 </body>
 </html>
