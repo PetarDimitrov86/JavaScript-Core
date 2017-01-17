@@ -5,7 +5,7 @@
     <title>Problem 4 : Colorize Table</title>
 </head>
 <body>
-<table>
+<table border="1">
     <tr><th>Name</th><th>Town</th></tr>
     <tr><td>Eve</td><td>Sofia</td></tr>
     <tr><td>Nick</td><td>Varna</td></tr>
@@ -17,7 +17,7 @@
     function colorize() {
         let table = document.querySelectorAll('table tr')
         for (let index in table)
-            if (index % 2 != 0 )
+            if (index % 2 == 1)
                 table[index].style.background = 'Teal';
     }
 </script>
