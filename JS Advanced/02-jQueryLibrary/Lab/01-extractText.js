@@ -6,3 +6,11 @@ function extractText() {
     resultText = resultText.substr(0, resultText.length - 2);
     $('#result').append(resultText);
 }
+
+// Version 2 : Shorter
+// function extractText() {
+//     let liElements = $('li');
+//     let resultText = '';
+//     [...liElements].forEach(li => resultText += `${li.textContent}, `);
+//     $('#result').append(resultText.substr(0, resultText.length - 2));
+// }
