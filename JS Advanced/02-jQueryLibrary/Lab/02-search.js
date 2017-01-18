@@ -6,6 +6,7 @@ function search(){
     foundItems.css('font-weight', 'bold');
     $(':not(:contains(' + searchPattern + '))').css('font-weight', 'normal');
     $('#result').append(foundItems.length + " matches found.")
+    $('#searchText').val("");
 }
 
 // Version 2 : Author Solution
