@@ -6,7 +6,7 @@ function attachGradientEvents() {
 
     function calcPercent(event){
         let newMouseX =  event.offsetX;
-        let percent = Math.trunc(newMouseX / 300 * 100);
+        let percent = Math.trunc(newMouseX / event.target.clientWidth * 100);
         div.textContent = percent + '%';
     }
 }
