@@ -41,7 +41,7 @@ function initializeTable() {
         row.fadeOut(function() {
             row.insertAfter(row.next());            // or similar effect would have row.next().insertBefore(row)
             row.fadeIn();
-            fixRowLinks();
+            fixRowLinks();      // very important to place this method here, because if it is outside this function, it will be called before the fading is completed.
         });
     }
     function deleteRow() {
