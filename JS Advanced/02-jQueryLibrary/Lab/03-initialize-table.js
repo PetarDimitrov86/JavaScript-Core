@@ -57,11 +57,11 @@ function initializeTable() {
 
         // Hide [Up] link in first table data row
         let tableRows = $('#countriesTable tr');
-        $(tableRows[2]).find("a:contains('Up')")
+        $(tableRows[2]).find("a:contains('Up')")                // tableRows[2] grabs the first line with entries.
             .css('display', 'none');
 
         // Hide the [Down] link in the last table row
-        $(tableRows[tableRows.length - 1]).find("a:contains('Down')")
+        $(tableRows[tableRows.length - 1]).find("a:contains('Down')")   // tableRows[tableRows.length - 1] is the last line
             .css('display', 'none');
     }
 }
