@@ -57,7 +57,7 @@ function initializeTable() {
 
         // Hide [Up] link in first table data row
         let tableRows = $('#countriesTable tr');
-        $(tableRows[2]).find("a:contains('Up')")                // tableRows[2] grabs the first line with entries.
+        $(tableRows[2]).find("a:contains('Up')")                // tableRows[2] grabs the first line with entries. .find looks for a particular element in the selected element.
             .css('display', 'none');
 
         // Hide the [Down] link in the last table row
