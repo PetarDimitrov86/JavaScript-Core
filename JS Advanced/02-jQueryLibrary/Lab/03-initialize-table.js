@@ -30,7 +30,7 @@ function initializeTable() {
     }
     function moveRowUp() {
         let row = $(this).parent().parent();        // this refers to the element that was used to activate the event.
-        row.fadeOut(function() {
+        row.fadeOut(function() {                    // .fadeOut slowly removes the element from the page, while .remove instantly removes it.
             row.insertBefore(row.prev());
             row.fadeIn();
             fixRowLinks();
