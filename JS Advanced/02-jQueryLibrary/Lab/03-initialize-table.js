@@ -29,7 +29,7 @@ function initializeTable() {
         row.fadeIn();
     }
     function moveRowUp() {
-        let row = $(this).parent().parent();
+        let row = $(this).parent().parent();        // this refers to the element that was used to activate the event.
         row.fadeOut(function() {
             row.insertBefore(row.prev());
             row.fadeIn();
