@@ -21,5 +21,12 @@ function attachEvents() {
             resultTownsArray.push(item.textContent);
         });
         $('#selectedTowns').text(resultTownsArray.join(', '))
-    }
+    }   
+    // Version 2 from author Solution:
+    // $('#showTownsButton').on('click', function() {
+    //     let selLi = $('#items li[data-selected=true]');
+    //     let towns = selLi.toArray()
+    //       .map(li => li.textContent).join(', ');
+    //     $('#selectedTowns').text("Selected towns: " + towns);
+    //   }); }
 }
