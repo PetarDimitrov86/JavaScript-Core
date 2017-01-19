@@ -53,7 +53,7 @@ function initializeTable() {
     }
     function fixRowLinks() {
         // Show all links in the table
-        $('#countriesTable a').css('display', 'inline');
+        $('#countriesTable a').css('display', 'inline');        // first we have to display all the links, and after that we can hide those that we don't need.
 
         // Hide [Up] link in first table data row
         let tableRows = $('#countriesTable tr');
