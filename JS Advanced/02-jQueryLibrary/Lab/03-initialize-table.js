@@ -16,7 +16,7 @@ function initializeTable() {
 
     function addCountryToTable(country, capital) {
         let row = $('<tr>')
-            .append($("<td>").text(country))
+            .append($("<td>").text(country))            // if it's like this .append($(`<td>${country}</td>`)), you have to HTML Escape the html symbols
             .append($("<td>").text(capital))
             .append($("<td>")
                 .append($("<a href='#'>[Up]</a>").click(moveRowUp))
