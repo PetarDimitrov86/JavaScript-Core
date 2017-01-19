@@ -47,7 +47,7 @@ function initializeTable() {
     function deleteRow() {
         let row = $(this).parent().parent();
         row.fadeOut(function() {
-            row.remove();
+            row.remove();                   // JavaScript is by default asynhronous, by giving a function in the fadeOut(), this way the function will be executed while the element is removed.
             fixRowLinks();
         });
     }
