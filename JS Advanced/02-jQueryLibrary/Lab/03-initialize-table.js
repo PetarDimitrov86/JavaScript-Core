@@ -6,10 +6,10 @@ function initializeTable() {
     fixRowLinks();
 
     function createCountry() {
-        let country = $('#newCountryText').val();
+        let country = $('#newCountryText').val();           // .val() <=> [0].textContent;
         let capital = $('#newCapitalText').val();
         addCountryToTable(country, capital, true);
-        $('#newCountryText').val('');
+        $('#newCountryText').val('');                       // Clear the fields for entering the text
         $('#newCapitalText').val('');
         fixRowLinks();
     }
