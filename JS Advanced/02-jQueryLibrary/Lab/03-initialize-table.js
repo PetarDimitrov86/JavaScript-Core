@@ -32,7 +32,7 @@ function initializeTable() {
         let row = $(this).parent().parent();        // this refers to the element that was used to activate the event.
         row.fadeOut(function() {                    // .fadeOut slowly removes the element from the page, while .remove instantly removes it.
             row.insertBefore(row.prev());           // row.prev().insertAfter(row). prev() takes the element before the current element in the DOM
-            row.fadeIn();
+            row.fadeIn();                           // .fadeIn is called to reverse the fadeOut. It changes the css 'display' from 'none' to 'inline'
             fixRowLinks();
         });
     }
