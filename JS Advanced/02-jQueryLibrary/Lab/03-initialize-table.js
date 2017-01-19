@@ -55,6 +55,7 @@ function initializeTable() {
         // Show all links in the table
         $('#countriesTable a').css('display', 'inline');        // first we have to display all the links, and after that we can hide those that we don't need.
                                                                 // Alternatively, you can just write $('#countriesTable a').show
+                                                                // .show() and .hide() do not work in judge.
         // Hide [Up] link in first table data row
         let tableRows = $('#countriesTable tr');
         $(tableRows[2]).find("a:contains('Up')")                // tableRows[2] grabs the first line with entries. .find looks for a particular element in the selected element.
