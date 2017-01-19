@@ -1,5 +1,5 @@
 function initializeTable() {
-    $("#createLink").click(createCountry);
+    $("#createLink").click(createCountry);          // eqiuvalent to document.getElemenentById('createLink').addEventListener('click', createCountry)
     addCountryToTable("Bulgaria", "Sofia");
     addCountryToTable("Germany", "Berlin");
     addCountryToTable("Russia", "Moscow");
