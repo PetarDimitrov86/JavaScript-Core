@@ -39,7 +39,7 @@ function initializeTable() {
     function moveRowDown() {
         let row = $(this).parent().parent();
         row.fadeOut(function() {
-            row.insertAfter(row.next());
+            row.insertAfter(row.next());            // or similar effect would have row.next().insertBefore(row)
             row.fadeIn();
             fixRowLinks();
         });
