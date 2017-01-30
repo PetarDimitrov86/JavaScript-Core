@@ -7,4 +7,4 @@ let add = (function(){
     }
 })();
 
-console.log('' + add(1)(6)(-3));
+console.log(add(1)(6)(-3).toString());
