@@ -6,7 +6,7 @@ let fibNums = (function (){
         for (let i = 0; i < num - 1; i++){
             fibNums.push(f1 + f2);
             f1 = f2;
-            f2 = fibNums[fibNums.length - 1]
+            f2 = fibNums[fibNums.length - 1]            // f2 = fibNums.slice(-1)[0];
         }
         return fibNums
     }
