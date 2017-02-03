@@ -4,7 +4,7 @@ function orderRectangles(arr){
         let rect = {
             width: rectangle[0],
             height: rectangle[1],
-            area:  () => rect.width * rect.height,
+            area:  () => rect.width * rect.height,      // important to use rect. instead of this.
             compareTo : function (other){
                 if (this.area() > other.area())              // DESCENDING SORT
                     return -1;
