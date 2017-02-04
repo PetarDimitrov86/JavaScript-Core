@@ -1,5 +1,6 @@
 function solve(){
     let obj = {};
+    // let obj = Object.create({});
     obj.extend = function(template){
         for (let prop in template){
             if (typeof template[prop] == 'function')
@@ -7,7 +8,6 @@ function solve(){
             else
                 obj[prop] = template[prop];
         }
-
     };
     return obj;
 }
