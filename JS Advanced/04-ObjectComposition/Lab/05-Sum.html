@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sum</title>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+</head>
+<body>
+<input type="text" id="num1" />
+<input type="text" id="num2" />
+<input type="text" id="result" readonly />
+<br>
+<button id="sumButton">
+    Sum</button>
+<button id="subtractButton">
+    Subtract</button>
+<script>
+    $(function() {
+    let model = getModel();
+    model.init('#num1', '#num2', '#result');
+    $('#sumButton').click(model.add);
+    $('#subtractButton').click(model.subtract);
+    });
+    function getModel() {
+        let model = {
+            init: function(num1Sel, num2Sel, resultSel) {
+                model.num1 = $(num1Sel);
+                model.num2 = $(num2Sel);
+                model.result = $(resultSel);
+            },
+            add: () => model.action((a, b) => a + b),
+            subtract: () => model.action((a, b) => a - b),
+            action: function(operation) {
+                let val1 = Number(model.num1.val());
+                let val2 = Number(model.num2.val());
+                model.result.val(operation(val1, val2));
+            }
+        };
+        return model;
+    }
+
+    // Solution using the "Revealing Module" pattern
+    //function getModel() {
+    //    let num1, num2, result;
+    //    function init(num1Sel, num2Sel, resultSel) {
+    //        num1 = $(num1Sel);
+    //        num2 = $(num2Sel);
+    //        result = $(resultSel);
+    //    }
+    //    function add() { action((a, b) => a + b); }
+    //    function subtract() { action((a, b) => a - b); }
+    //    function action(operation) {
+    //        let val1 = Number(num1.val());
+    //        let val2 = Number(num2.val());
+    //        result.val(operation(val1, val2));
+    //    }
+
+    //    let model = { init, add, subtract };
+    //    return model;
+    //}
+</script>
+</body>
+</html>
