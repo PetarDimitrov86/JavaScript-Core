@@ -6,8 +6,7 @@ function figures(){
         }
         get area() { return undefined; }
         toString() {
-            let type = this.constructor.name;
-            return type;
+            return `${this.constructor.name} - `;
         }
 
     }
@@ -19,7 +18,7 @@ function figures(){
         };
         get area() { return Math.PI * this.radius * this.radius; }
         toString(){
-            return `${this.constructor.name} - radius: ${this.radius}`
+            return `${super.toString()}radius: ${this.radius}`
         }
     }
 
@@ -31,7 +30,7 @@ function figures(){
         }
         get area() { return this.width * this.height; }
         toString(){
-            return `${this.constructor.name} - width: ${this.width}, height: ${this.height}`
+            return `${super.toString()}width: ${this.width}, height: ${this.height}`
         }
     }
     return { Figure, Circle, Rectangle}
