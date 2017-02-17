@@ -31,3 +31,5 @@ class SortedList {
         return this.list.length;
     }
 }
+
+module.exports = {SortedList};
