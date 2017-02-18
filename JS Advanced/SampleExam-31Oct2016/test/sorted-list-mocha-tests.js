@@ -2,9 +2,9 @@ let expect = require('chai').expect;
 let SortedList = require('../02-SortedList').SortedList;
 
 describe("SortedList() - let you use store a sorted collection",function(){
-    let sortedList;
-    beforeEach(function() {
-        sortedList = new SortedList();
+    let sortedList;                         // Must be outside the beforeEach scope
+    beforeEach(function() {     
+        sortedList = new SortedList();          // Create new instance before each IT, so that we do not keep any changes made from the tests
     });
     describe('constructor & methods', function () {
         it("should have a constructor & methods", function () {
