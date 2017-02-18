@@ -13,7 +13,7 @@ class Record{
         return Record.currentId++;
     }
 
-    toString(){
+    toString(){                                                                 // Using `` only automaticly adds new lines if the text is on a new line
         return `Reading ID: ${this.id}\n` +
                 `Temperature: ${this.temperature}*C\n` +
                 `Relative Humidity: ${this.humidity}%\n` +
