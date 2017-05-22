@@ -1,9 +1,8 @@
-function sumNumbers (input) {
-    let num1 = Number(input[0]);
-    let num2 = Number(input[1]);
-    let num3 = Number(input[2]);
+function sumNumbers (n1, n2, n3) {
+    let num1 = Number(n1);
+    let num2 = Number(n2);
+    let num3 = Number(n3);
     let sum = num1 + num2 + num3;
     return sum;
 }
-
-//sumNumbers (['5', '10', '15'])
+//sumNumbers ('5', '10', '15')
