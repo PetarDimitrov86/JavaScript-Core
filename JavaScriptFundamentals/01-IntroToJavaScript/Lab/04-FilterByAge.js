@@ -1,10 +1,4 @@
-function minAge (input){
-    let minimumAge = Number(input[0]);
-    let firstName = input[1];
-    let firstAge = Number(input[2]);
-    let secondName = input[3];
-    let secondAge = Number(input[4]);
-
+function minAge (minimumAge, firstName, firstAge, secondName, secondAge){
     let firstPerson = { name : firstName, age : firstAge };
     let secondPerson = { name : secondName, age : secondAge  };
 
