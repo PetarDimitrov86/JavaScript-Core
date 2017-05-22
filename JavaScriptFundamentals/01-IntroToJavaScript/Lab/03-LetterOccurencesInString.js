@@ -1,4 +1,4 @@
-function countLetter([str, letter]){
+function countLetter(str, letter){
     let count = 0;
     for (let strLet of str){
         if (strLet == letter)
@@ -7,4 +7,4 @@ function countLetter([str, letter]){
     console.log(count);
 }
 
-// countLetter(['hello', 'l'])
+// countLetter('hello', 'l')
