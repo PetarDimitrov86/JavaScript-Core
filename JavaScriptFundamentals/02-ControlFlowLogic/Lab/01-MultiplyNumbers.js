@@ -1,9 +1,6 @@
-function multiply(input) {
-    let result = 1;
-    for (let num of input){
-        result *= Number(num);
-    }
+function multiply(num1, num2) {
+    let result = num1 * num2;
     return result;
 }
 
-// multiply(['3', '2'])
+// multiply('3', '2')
