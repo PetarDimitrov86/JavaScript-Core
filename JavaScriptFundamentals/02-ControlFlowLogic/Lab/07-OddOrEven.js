@@ -1,5 +1,5 @@
 function oddOrEven (num) {
-    let number = Math.abs(num.map(Number));
+    let number = Math.abs(Number(num));
     if (number % 2 == 0) {
         console.log('even');
     }
