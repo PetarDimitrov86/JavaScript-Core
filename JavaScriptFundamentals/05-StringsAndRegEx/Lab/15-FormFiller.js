@@ -1,5 +1,4 @@
-function fillForm(input){
-    let [username, email, phone] = [input.shift(), input.shift(), input.shift()];
+function fillForm(username, email, phone, input){
     for (let line of input){
         console.log(line.replace(/<![a-zA-Z]+!>/g, username)
             .replace(/<@[a-zA-Z]+@>/g, email)
