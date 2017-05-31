@@ -1,5 +1,4 @@
-function countEqualNeighbors(input){
-    let matrix = input.map(r => r.split(' '));
+function countEqualNeighbors(matrix){
     let counter = 0;
     for (let row = 0; row < matrix.length; row++){
         for (let col = 0; col < matrix[row].length; col++){
