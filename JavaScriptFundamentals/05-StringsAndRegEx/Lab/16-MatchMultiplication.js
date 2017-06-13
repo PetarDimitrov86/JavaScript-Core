@@ -13,3 +13,10 @@ console.log(multiply(['My bill: 2*2.50 (beer); 2* 1.20 (kepab); -2  * 0.5 (depos
 // function performMultiplications([text]) {
 //     return text.replace(/(-?\d+)\s*\*\s*(-?\d+(\.\d+)?)/g, (match, num1, num2) => Number(num1) * Number(num2));
 // }
+
+// Helper for replace
+// let pattern = /([A-Za-z]+)([\d]+)(?=\s)/g;
+// let text = 'Word98 SecondWord33 ThirdWord54';
+// text = text.replace(pattern, replacer)
+//
+// function replacer(match, gr1, gr2) { return gr2 + gr1; }
