@@ -14,15 +14,3 @@ function biggestElement(matrix) {
 //              biggestNum = matrix[row][col];
 //      }
 //  }
-
-// Version 3 : Author Solution
-// function biggestElement(matrixRows) {
-//     let matrix = matrixRows.map(row => row.split(' ').map(Number));
-//     let biggestNum = Number.NEGATIVE_INFINITY;
-// 
-//     matrix.forEach(
-//         r => r.forEach(
-//             c => biggestNum = Math.max(biggestNum, c)));
-// 
-//     return biggestNum;
-// }
