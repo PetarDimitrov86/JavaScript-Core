@@ -10,15 +10,12 @@ function solve(dataRows){
     let matrix = dataRows.map(r => r.split(' ').map(Number));
     for (let row = 0; row < matrix.length; row+= length) {
         for (let col = 0; col < matrix[row].length; col+= rowsDecodingMatrix[0].length) {
-            let decodingNumbers = rowsDecodingMatrix.join(' ').split(/[,\s]/g);
-            for (let i = row; i < length + row; i++){
-                for (let j = col; j < rowsDecodingMatrix[0].length + col; j++){
-                    if (j >= matrix[row].length || i >= matrix.length){
-                        decodingNumbers.shift();
-                        continue;
+            for (let i = 0; i < length; i++){
+                for (let j = 0; j < rowsDecodingMatrix[0].length; j++){
+                    if (row + i < matrix.length && col + j < matrix[row].length){
+                        matrix[row + i][col + j] += Number(rowsDecodingMatrix[i][j]);
+                        matrix[row + i][col + j] = letters[matrix[row + i][col + j] % letters.length];
                     }
-                    matrix[i][j] += Number(decodingNumbers.shift());
-                    matrix[i][j] = letters[matrix[i][j] % letters.length];
                 }
             }
         }
