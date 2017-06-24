@@ -17,6 +17,15 @@
 <button onclick="sum()">Sum</button>
 </body>
 <script>
- 
+    function sum(){
+        let tableRows = document.querySelectorAll('table>tbody>tr');
+        let sum = 0;
+        let length = tableRows.length - 1;
+        for (let row = 1; row < length; row++){
+            let cost = tableRows[row].querySelector('td:last-child');
+            sum += Number(cost.textContent)
+        }
+        tableRows[length].querySelector('td:last-child').textContent = sum.toString();
+    }
 </script>
 </html>
