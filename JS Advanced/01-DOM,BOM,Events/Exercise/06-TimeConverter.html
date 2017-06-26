@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Time Converter</title>
+    <style>
+        label, input {
+            display: inline-block;
+            width: 5em;
+        }
+        label {
+            text-align: right;
+        }
+    </style>
+</head>
+<body onload="attachEventsListeners()">
+<h1>Time Converter</h1>
+<div>
+    <label for="days">Days: </label>
+    <input type="text" id="days">
+    <input id="daysBtn" type="button" value="Convert">
+</div>
+<div>
+    <label for="hours">Hours: </label>
+    <input type="text" id="hours">
+    <input id="hoursBtn" type="button" value="Convert">
+</div>
+<div>
+    <label for="minutes">Minutes: </label>
+    <input type="text" id="minutes">
+    <input id="minutesBtn" type="button" value="Convert">
+</div>
+<div>
+    <label for="seconds">Seconds: </label>
+    <input type="text" id="seconds">
+    <input id="secondsBtn" type="button" value="Convert">
+</div>
+<script>
+    function attachEventsListeners(){
+        document.getElementById('daysBtn').addEventListener('click', calculateFromDays);
+        document.getElementById('hoursBtn').addEventListener('click', calculateFromHours);
+        document.getElementById('minutesBtn').addEventListener('click', calculateFromMinutes);
+        document.getElementById('secondsBtn').addEventListener('click', calculateFromSeconds);
+
+        function calculateFromDays() {
+            let days = Number(document.getElementById('days').value);
+            calculateTime(days * 86400);
+        }
+
+        function calculateFromHours() {
+            let hours = Number(document.getElementById('hours').value);
+            calculateTime(hours * 3600);
+        }
+
+        function calculateFromMinutes() {
+            let minutes = Number(document.getElementById('minutes').value);
+            calculateTime(minutes * 60);
+        }
+
+        function calculateFromSeconds() {
+            let seconds = Number(document.getElementById('seconds').value);
+            calculateTime(seconds);
+        }
+
+        function calculateTime(seconds){
+            document.getElementById('days').value = seconds / 86400;
+            document.getElementById('seconds').value = seconds;
+            document.getElementById('hours').value = seconds / 3600;
+            document.getElementById('minutes').value = seconds / 60;
+        }
+    }
+</script>
+</body>
+</html>
