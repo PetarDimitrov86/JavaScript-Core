@@ -48,13 +48,12 @@
 <script>
     function attachEventsListeners() {
         document.getElementById('convert').addEventListener('click', convertDistance);
-
+        let meterDistances =  { km: 1000, m: 1, cm: 0.01, mm: 0.001, mi:1609.34, yrd:0.9144, ft:0.3048, in:0.0254 };
+        
         function convertDistance(){
             let fromDistance = Number(document.getElementById('inputDistance').value);
             let metricDistanceFrom = document.getElementById('inputUnits').value;
             let metricDistanceTo = document.getElementById('outputUnits').value;
-
-            let meterDistances =  { km: 1000, m: 1, cm: 0.01, mm: 0.001, mi:1609.34, yrd:0.9144, ft:0.3048, in:0.0254 };
 
             let distanceInMeters = fromDistance * meterDistances[metricDistanceFrom];
             let convertedDistance = distanceInMeters / meterDistances[metricDistanceTo];
