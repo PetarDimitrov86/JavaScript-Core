@@ -13,8 +13,6 @@ function simplifiedFormatter(formatter){
     }
 }
 
-
-
 let dollarFormatter = simplifiedFormatter(currencyFormatter);
 console.log(dollarFormatter(5345));   // $ 5345,00
 console.log(dollarFormatter(3.1429)); // $ 3,14
