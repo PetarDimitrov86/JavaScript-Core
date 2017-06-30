@@ -28,7 +28,7 @@ function calculateBMI(name, age, weight, height){
     person.status = status;
     if (status == 'obese')
         person.recommendation = 'admission required';
-    return this;
+    return person;
 }
 
 console.log(calculateBMI('Peter', 29, 75, 182));
