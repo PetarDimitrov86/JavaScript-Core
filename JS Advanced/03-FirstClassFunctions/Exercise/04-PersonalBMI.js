@@ -12,18 +12,10 @@ function calculateBMI(name, age, weight, height){
     person.BMI = bmi;
     let status;
     switch (true){
-        case bmi < 18.5:
-            status = 'underweight';
-            break;
-        case bmi < 25:
-            status = 'normal';
-            break;
-        case bmi < 30:
-            status = 'overweight';
-            break;
-        case bmi >= 30:
-            status = 'obese';
-            break;
+        case bmi < 18.5: status = 'underweight'; break;
+        case bmi < 25: status = 'normal'; break;
+        case bmi < 30: status = 'overweight'; break;
+        case bmi >= 30: status = 'obese'; break;
     }
     person.status = status;
     if (status == 'obese')
