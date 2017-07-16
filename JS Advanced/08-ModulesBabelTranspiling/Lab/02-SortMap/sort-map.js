@@ -1,10 +1,8 @@
 function mapSort(map, sortCriteria) {
     if (sortCriteria == undefined){
-        let sortedMap = new Map();
-        for (let el of Array.from(map.keys()).sort()){
-            sortedMap.set(el, map.get(el))
-        }
-        return sortedMap
+        sortCriteria = function (a, b) {
+            return a[0].toString().localeCompare(b[0].toString());
+        };
     }
 
     let sortedMap = new Map();
