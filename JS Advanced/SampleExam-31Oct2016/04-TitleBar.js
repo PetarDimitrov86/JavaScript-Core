@@ -5,14 +5,6 @@ class TitleBar{
         $('.button').on('click', this.toggleDisplay)
     }
 
-    toggleDisplay(){
-        if ($('.drawer').css('display') == 'none' || $('.drawer').css('display') == undefined )
-            $('.drawer').css('display', 'block');
-        else
-            $('.drawer').css('display', 'none');
-
-    }
-
     addLink(href, name) {
         this.links.push($('<a>')
                         .addClass('menu-link')
