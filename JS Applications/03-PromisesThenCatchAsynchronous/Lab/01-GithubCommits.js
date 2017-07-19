@@ -11,8 +11,9 @@ function loadCommits() {
 
     function createList(data){
         for (let commit of data) {
+            let commitObj = commit.commit;
             commits.append($('<li>')
-                .text(`${commit.commit.author.name}: ${commit.commit.message}`))
+                .text(`${commitObj.author.name}: ${commitObj.message}`))
         }
     }
 }
