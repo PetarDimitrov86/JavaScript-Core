@@ -16,12 +16,8 @@ function attachEvents() {
                     .text(`${data[entry].person}: ${data[entry].phone} `)
                     .append($('<button>')
                         .text('Delete')
-                        .click(() => {
-                            $.ajax({
-                                method: "DELETE",
-                                url: `https://phonebook-nakov.firebaseio.com/phonebook/${entry}.json`
-                            })
-                                .then(loadContacts)
+                        .click(function() {
+                            deleteContact(entry)
                         }))
                 );
         }
