@@ -1,4 +1,5 @@
 function attachEvents() {
+    let hostUrl = 'https://messenger-8467e.firebaseio.com/messenger.json';
     $('#submit').click(sendMessage);
     $('#refresh').click(receiveMessages);
 
@@ -8,14 +9,14 @@ function attachEvents() {
             content: $('#content').val(),
             timestamp: Date.now()
         };
-        $.post('https://messenger-8467e.firebaseio.com/messenger.json', JSON.stringify(message))
+        $.post(hostUrl, JSON.stringify(message))
             .then(receiveMessages);
         $('#content').val('')
     }
 
     function receiveMessages(){
         $('#messages').empty();
-        $.get('https://messenger-8467e.firebaseio.com/messenger.json')
+        $.get(hostUrl)
             .then(retrieveChatHistory);
 
         function retrieveChatHistory(data) {
