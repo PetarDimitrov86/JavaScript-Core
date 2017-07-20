@@ -4,15 +4,12 @@
     <title>Table Builder</title>
     <style>td,th { background:#DDD; padding:5px }</style>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
 </head>
 <body>
 <div id="main"></div>
-<script>
-    function tableBuilder(selector) {
-        // TODO: return { … }
-    }
-</script>
-<script>
+<script src="04-TableBuilder.js"></script>
+<script defer>
     $(function() {
         let builder = tableBuilder("#main");
         builder.createTable(['Name', 'Town']);
