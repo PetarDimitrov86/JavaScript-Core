@@ -21,11 +21,7 @@ class MailBox {
             return `* (empty mailbox)`;
         else
         {
-            let result = '';
-            for (let message of this.messages){
-                result+=`* [${message.subject}] ${message.text}\n`
-            }
-            return result;
+            return this.messages.map(m => `* [${m.subject}] ${m.text}`).join('\n')
         }
     }
 
