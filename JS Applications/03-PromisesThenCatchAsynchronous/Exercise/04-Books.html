@@ -11,14 +11,14 @@
 <body>
 <div class="container">
     <div class="row">
-        <div class="col-sm-4 col-sm-offset-1">
+        <div class="col-sm-4 col-sm-offset-1" id="addBookForm">
             <form class="form-horizontal">
-                <label for="isbn">ISBN</label>
-                <input type="number" id="isbn" class="form-control" style="display:inline"><br>
-                <label for="title">Title</label>
-                <input type="text" id="title" class="form-control" style="display:inline"><br>
-                <label for="author">Author</label>
-                <input type="text" id="author" class="form-control" style="display:inline"><br>
+                <label>ISBN</label>
+                <input type="number" class="isbn" class="form-control" style="display:inline"><br>
+                <label>Title</label>
+                <input type="text" class="title" class="form-control" style="display:inline"><br>
+                <label>Author</label>
+                <input type="text" class="author" class="form-control" style="display:inline"><br>
             </form>
         </div>
     </div>
@@ -27,14 +27,23 @@
             <button id="addBook" class="btn btn-success">Create Book</button>
         </div>
     </div>
-    <table class="table" id="books">
-        <tr>
-            <th>ISBN</th>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Action</th>
-        </tr>
-    </table>
+    <div class="row">
+        <div class="col-sm-6">
+            <table id="books" class="table"></table>
+        </div>
+        <div class="col-sm-4">
+            <form class="form-horizontal" id="editBookForm">
+                <label>ISBN</label>
+                <input type="number" class="isbn" class="form-control" style="display:inline"><br>
+                <label>Title</label>
+                <input type="text" class="title" class="form-control" style="display:inline"><br>
+                <label>Author</label>
+                <input type="text" class="author" class="form-control" style="display:inline"><br>
+                <input type="hidden" id="bookId">
+                <button id="editBook" class="btn btn-primary">Edit Book</button>
+            </form>
+        </div>
+    </div>
 </div>
 <script src="04-Books.js"></script>
 <script src="bootstrap-3.3.7-dist/js/bootstrap.js"></script>

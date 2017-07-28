@@ -10,3 +10,11 @@ input {
 label {
     min-width:70px;
 }
+
+table, tr, th, td {
+    text-align: center;
+}
+
+#editBookForm {
+    display: none;
+}
