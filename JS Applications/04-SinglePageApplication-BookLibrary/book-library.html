@@ -62,15 +62,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>Book title</td>
-                    <td>Book author</td>
-                    <td>Book description</td>
-                    <td>
-                        <a href="#">[Delete]</a>
-                        <a href="#">[Edit]</a>
-                    </td>
-                </tr>
                 </tbody>
             </table>
         </div>
@@ -99,11 +90,10 @@
             <div><input type="text" name="author" required /></div>
             <div>Description:</div>
             <div><textarea name="descr" rows="10" required></textarea></div>
+            <input type="hidden" id="editBookId">
             <div><input type="submit" value="Edit" /></div>
         </form>
     </section>
-
-
 </main>
 <footer>Book Library - Simple SPA Application</footer>
 </body>
