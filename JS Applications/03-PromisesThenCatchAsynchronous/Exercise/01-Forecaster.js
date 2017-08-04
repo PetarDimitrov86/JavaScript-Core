@@ -4,8 +4,7 @@ function attachEvents(){
         'Sunny': '&#x2600;',
         'Partly sunny': '&#x26C5;',
         'Overcast': '&#x2601;',
-        'Rain': '&#x2614;',
-        'Degrees': '&#176;'
+        'Rain': '&#x2614;'
     };
     $('#submit').click(getWeatherReport);
 
@@ -53,8 +52,6 @@ function attachEvents(){
                             .append($('<span>').addClass('forecast-data').text(day.condition))));
 
                 }
-                console.dir(currentConditions);
-                console.dir(threeDayForecast)
             }
 
             function displayError(){
