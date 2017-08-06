@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Prodavachnik</title>
     <script src="scripts/jquery-3.1.1.min.js"></script>
     <script src="scripts/prodavachnik.js"></script>
@@ -65,21 +66,10 @@
                     <th>Description</th>
                     <th>Price</th>
                     <th>Date Published</th>
+                    <th>Actions</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <td>Ad title</td>
-                    <td>Ad author</td>
-                    <td>Ad description</td>
-                    <td>Price</td>
-                    <td>Date published</td>
-                    <td>
-                        <a href="#">[Delete]</a>
-                        <a href="#">[Edit]</a>
-                    </td>
-                </tr>
-                </tbody>
+                <tbody></tbody>
             </table>
         </div>
     </section>
@@ -95,6 +85,8 @@
             <div><input type="date" name="datePublished" required /></div>
             <div>Price:</div>
             <div><input type="number" step="0.01" name="price" required /></div>
+            <div>Image:</div>
+            <div><input type="text" name="image" pattern="(http|https)://.+" required /></div>
             <div><input type="submit" id="buttonCreateAd" value="Create" /></div>
         </form>
     </section>
@@ -104,6 +96,7 @@
         <form id="formEditAd" class="form">
             <div><input type="hidden" name="id" required /></div>
             <div><input type="hidden" name="publisher" required /></div>
+            <div><input type="hidden" name="views" required /></div>
             <div>Title:</div>
             <div><input type="text" name="title" required /></div>
             <div>Description:</div>
@@ -112,9 +105,24 @@
             <div><input type="date" name="datePublished" required /></div>
             <div>Price:</div>
             <div><input type="number" step="0.01" name="price" required /></div>
+            <div>Image:</div>
+            <div><input type="text" name="image" pattern="(http|https)://.+" required /></div>
             <div><input type="submit" id="buttonEditAd" value="Edit" /></div>
         </form>
     </section>
+
+    <section id="viewDetailsAd" class="viewDetailsAd">
+        <h1 class="titleForm"></h1>
+        <form id="formDetailsAd" class="form">
+            <div>Sold by <span type="text" name="publisher" required disabled style="text-align: center"/></div>
+            <div><img name="image" src="" class="product-image"></div>
+            <label>Description:</label>
+            <div><textarea name="description" rows="10" required disabled style="text-align: center" ></textarea></div>
+            <div>Published on <span type="date" name="datePublished" required disabled style="text-align: center"/></div>
+            <div>Price: <span type="text" name="price" required disabled style="text-align: center"/></div>
+        </form>
+    </section>
+
     <script>
         startApp();
     </script>

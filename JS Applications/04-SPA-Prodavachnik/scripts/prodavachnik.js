@@ -30,6 +30,11 @@ function startApp() {
         let username = $('#formLogin').find(`input[name=username]`).val();
         let password = $('#formLogin').find(`input[name=passwd]`).val();
 
+        if (username === '' || password === ''){
+            showError('Please fill all the input fields!');
+            return
+        }
+
         $.post({
             url:kinveyBaseUrl + `user/${kinveyAppKey}/login`,
             headers: kinveyAppAuthHeaders,
@@ -41,13 +46,26 @@ function startApp() {
         function successLoginUser(userInfo) {
             saveUserInfoInSession(userInfo);
             showHideMenuLinks();
+            showInfo('Successfully logged in.');
             listAds()
         }
+    }
+
+    function logoutUser(){
+        sessionStorage.clear();
+        showHideMenuLinks();
+        showHomeView();
+        $('#loggedInUser').text('');
     }
 
     function registerUser(){
         let username = $('#formRegister').find(`input[name=username]`).val();
         let password = $('#formRegister').find(`input[name=passwd]`).val();
+
+        if (username === '' || password === ''){
+            showError('Please fill all the input fields!');
+            return
+        }
 
         $.post({
             url: kinveyBaseUrl + `user/${kinveyAppKey}/`,
@@ -66,37 +84,52 @@ function startApp() {
     }
 
     function createAd(){
-        let title = $('#formCreateAd').find(`input[name=title]`).val();
-        let description = $('#formCreateAd').find(`textarea[name=description]`).val();
         let dateInfo = $('#formCreateAd').find(`input[name=datePublished]`).val().split('-');
-        let publishDate = `${dateInfo[1]}/${dateInfo[2]}/${dateInfo[0]}`;
-        let price = $('#formCreateAd').find(`input[name=price]`).val();
-        let publisher = sessionStorage.getItem('username');
-
+        let newAd = {
+            title: $('#formCreateAd').find(`input[name=title]`).val(),
+            description: $('#formCreateAd').find(`textarea[name=description]`).val(),
+            publishDate: `${dateInfo[1]}/${dateInfo[2]}/${dateInfo[0]}`,
+            price: Number($('#formCreateAd').find(`input[name=price]`).val()),
+            imageUrl: $('#formCreateAd').find(`input[name=image]`).val(),
+            publisher: sessionStorage.getItem('username'),
+            views: 0
+        };
         $.post({
             headers: getKinveyUserAuthHeaders(),
-            data: JSON.stringify({ title, description, publishDate, price, publisher }),
+            data: JSON.stringify(newAd),
             contentType: 'application/json',
             url: kinveyBaseUrl + `appdata/${kinveyAppKey}/ads`,
-            success: successCreateAd,
+            success: () => {
+                listAds();
+                showInfo('Book successfully created.')
+            },
             error: handleAjaxError
         });
-
-        function successCreateAd(){
-            listAds();
-        }
     }
 
-    function editAd(){
+    function editAd() {
+        let title = $('#formEditAd').find(`input[name=title]`).val();
+        let description = $('#formEditAd').find(`textarea[name=description]`).val();
+        let dateInfo = $('#formEditAd').find(`input[name=datePublished]`).val().split('-');
+        let publishDate = `${dateInfo[1]}/${dateInfo[2]}/${dateInfo[0]}`;
+        let price = Number($('#formEditAd').find(`input[name=price]`).val());
+        let publisher = sessionStorage.getItem('username');
+        let id = $('#formEditAd').find(`input[name=id]`).val();
+        let views = $('#formEditAd').find(`input[name=views]`).val();
+        let imageUrl = $('#formEditAd').find(`input[name=image]`).val();
 
-    }
-
-    function showCreateAdView(){
-        showView('viewCreateAd');
-    }
-
-    function showHomeView(){
-        showView('viewHome');
+        $.ajax({
+            method: 'PUT',
+            headers: getKinveyUserAuthHeaders(),
+            data: JSON.stringify({ title, description, publishDate, price: Number(price), publisher, views, imageUrl }),
+            contentType: 'application/json',
+            url: kinveyBaseUrl + `appdata/${kinveyAppKey}/ads/${id}`,
+            success: () => {
+                listAds();
+                showInfo('Book successfully edited.')
+            },
+            error: handleAjaxError
+        });
     }
 
     function listAds(){
@@ -111,16 +144,82 @@ function startApp() {
         function successListAds(data) {
             let tableData = $('#ads').find('table').find('tbody');
             tableData.empty();
-            for (let ad of data) {
-                tableData.append($('<tr>')
+            let sortedAds = data.sort( (a, b) => b.views - a.views);
+            for (let ad of sortedAds) {
+                let row = $('<tr>')
                     .append($('<td>').text(ad.title))
                     .append($('<td>').text(ad.publisher))
                     .append($('<td>').text(ad.description))
                     .append($('<td>').text(ad.price))
-                    .append($('<td>').text(ad.publishDate))
-                    .append($('<td>')))
+                    .append($('<td>').text(ad.publishDate));
+                let actions = $('<td>');
+                if (sessionStorage.getItem('userId') === ad._acl.creator){
+                    actions.append($('<a href="#">').text('Delete').click(() => deleteAd(ad._id)))
+                        .append(' ')
+                        .append($('<a href="#">').text('Edit').click(() => fillEditAdDetails(ad)))
+                }
+                actions.append(' ', $('<a href="#">').text('Read More').click(() => viewAdDetails(ad)));
+                row.append(actions);
+                tableData.append(row)
             }
         }
+    }
+
+    function viewAdDetails(ad) {
+        showView('viewDetailsAd');
+        $('#formDetailsAd').trigger('reset');
+        $('#viewDetailsAd').find(`h1`).text(ad.title);
+        $('#formDetailsAd').find(`textarea[name=description]`).val(ad.description);
+        $('#formDetailsAd').find(`span[name=price]`).text(`${ad.price} лв.`);
+        $('#formDetailsAd').find(`span[name=publisher]`).text(ad.publisher);
+        $('#formDetailsAd').find(`img[name=image]`).attr('src', ad.imageUrl);
+        let dateInfo = ad.publishDate.split('/');
+        $('#formDetailsAd').find(`span[name=datePublished]`).text(`${dateInfo[1]}.${dateInfo[0]}.${dateInfo[2]}`);
+
+        ad.views++;
+        $.ajax({
+            method: 'PUT',
+            headers: getKinveyUserAuthHeaders(),
+            data: JSON.stringify(ad),
+            contentType: 'application/json',
+            url: kinveyBaseUrl + `appdata/${kinveyAppKey}/ads/${ad._id}`,
+            error: handleAjaxError
+        });
+    }
+
+    function deleteAd(id) {
+        $.ajax({
+            url: kinveyBaseUrl + `appdata/${kinveyAppKey}/ads/${id}`,
+            method: 'DELETE',
+            headers: getKinveyUserAuthHeaders(),
+            success: () => {
+                listAds();
+                showInfo('Book deleted.')
+            },
+            error: handleAjaxError
+        })
+    }
+
+    function fillEditAdDetails(ad){
+        showView('viewEditAd');
+        $('#formEditAd').trigger('reset');
+        $('#formEditAd').find(`input[name=title]`).val(ad.title);
+        $('#formEditAd').find(`textarea[name=description]`).val(ad.description);
+        $('#formEditAd').find(`input[name=price]`).val(ad.price);
+        $('#formEditAd').find(`input[name=id]`).val(Number(ad._id));
+        $('#formEditAd').find(`input[name=views]`).val(ad.views);
+        $('#formEditAd').find(`input[name=image]`).val(ad.imageUrl);
+        let dateInfo = ad.publishDate.split('/');
+        $('#formEditAd').find(`input[name=datePublished]`).val(`${dateInfo[2]}-${dateInfo[0]}-${dateInfo[1]}`);
+    }
+
+    function showCreateAdView(){
+        showView('viewCreateAd');
+        $('#formCreateAd').trigger('reset');
+    }
+
+    function showHomeView(){
+        showView('viewHome');
     }
 
     function showLoginView(){
@@ -133,17 +232,10 @@ function startApp() {
         $('#formRegister').trigger('reset');
     }
 
-    function logoutUser(){
-        sessionStorage.clear();
-        showHideMenuLinks();
-        $('#loggedInUser').text('');
-    }
-
     function showView(viewName) {
         $('main>section').hide();
         $(`#${viewName}`).show();
     }
-
 
     function showHideMenuLinks() {
         $("#linkHome").show();
